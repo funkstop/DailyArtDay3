@@ -1,8 +1,0 @@
-Model Information:
-* title:	[Game-Ready] Wine bottle and Flowers
-* source:	https://sketchfab.com/3d-models/game-ready-wine-bottle-and-flowers-54024602d67d4adc911dbc81c4e3ad4d
-* author:	ME.RROR (https://sketchfab.com/merror)
-
-Model License:
-* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
-* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
