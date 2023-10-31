@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>AR Gratitude Art</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://ar-js-org.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls-component@0.1.14/dist/aframe-orbit-controls-component.min.js"></script>
+    <style>
+        canvas {
+            z-index: 9999;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+
+<body style='margin: 0; overflow: hidden;'>
+
+    <a-scene embedded arjs="sourceType: webcam; trackingMethod: best;">
+
+        <!-- 3D Model -->
+        <a-entity id="ar-model" gltf-model="url(bottle_and_flowers/scene.gltf)" position="0 1.5 -3" rotation="0 0 0" scale="1 1 1" visible="false"></a-entity>
+
+        <!-- Reticle for Placement -->
+        <a-entity id="reticle" position="0 1.1 -2" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: red; opacity: 0.6;"></a-entity>
+        
+        <!-- Camera with Raycaster for Interaction -->
+       
+        <a-camera orbit-controls="target: #ar-model; enableDamping: true; dampingFactor: 0.25; rotateSpeed: 0.5;"></a-camera>
+
+
+    </a-scene>
+
+    <a-scene embedded arjs="sourceType: webcam;">
+        <a-assets>
+            <!-- Define your 3D model asset with an ID -->
+            <a-asset-item id="flowerModel" src="blue_flower_animated/scene.gltf"></a-asset-item>
+        </a-assets>
+        <!-- Multiple Flower Entities -->
+        <a-entity class="flower" gltf-model="#flowerModel" position="random_position" scale="0.1 0.1 0.1"></a-entity>
+        <!-- ... more flower entities -->
+        
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
+    </a-scene>
+
+    <script>
+       /* function placeModel(event) {
+            console.log("Placing model...");
+            event.preventDefault();
+
+            const model = document.querySelector('#ar-model');
+            const reticle = document.querySelector('#reticle');
+            model.setAttribute('position', reticle.getAttribute('position'));
+            model.setAttribute('visible', 'true');
+            console.log("Model placed!");
+        }
+
+        document.querySelector('a-scene').addEventListener('renderstart', function() {
+            console.log("Render started!");
+            const canvas = document.querySelector('a-scene').canvas;
+            canvas.addEventListener('click', placeModel);
+        });*/
+
+
+
+    // Function to scale up and change texture to a blossomed flower
+    function blossomFlowers() {
+        var flowers = document.querySelectorAll('.flower');
+        flowers.forEach((flower) => {
+            // Scale up animation
+            flower.emit('blossom');
+        });
+    }
+
+    // Add tap event listener to the scene
+    document.querySelector('a-scene').addEventListener('click', blossomFlowers);
+
+    // Define A-Frame animation component for blossoming
+    AFRAME.registerComponent('blossom', {
+        init: function () {
+            // Define the blossom animation here
+            this.el.setAttribute('animation', {
+                property: 'scale',
+                to: '1 1 1',
+                easing: 'easeOutElastic',
+                dur: 1000
+            });
+        }
+    });
+
+
+
+    </script>
+
+</body>
+
+</html>
+
+<!-- <body style='margin: 0; overflow: hidden;'>
+    <a-scene embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: true;">
+        <!-- Your AR content will go here - ->
+        <a-text value="Thankful for this moment" position="0 0.5 0" align="center" color="#EF2D5E"></a-text>
+        <a-marker-camera type="pattern" url="DailyArtDay3Marker.patt"></a-marker-camera>
+		<a-marker-camera type="pattern" url="https://cdn.glitch.com/418c9d09-ea8f-42a9-a6b8-65fe2a5baa88%2Fpattern-marker%20(3).patt?1528056640776"></a-marker-camera>
+    </a-scene>    
+
+    <p>
+      I'm your cool new webpage. Made with <a href="https://chat.openai.com">ChatGPT</a>!
+    </p>
+
+</html> -->
+
+
+
+
+
+
