@@ -1,0 +1,8 @@
+Model Information:
+* title:	Butterfly
+* source:	https://sketchfab.com/3d-models/butterfly-0778b9c229d4444e8aaef865b752764a
+* author:	Zacxophone (https://sketchfab.com/Zacxophone)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
