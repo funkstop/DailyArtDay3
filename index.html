@@ -65,7 +65,7 @@
             console.log("placeFlowers");
             let scene = document.querySelector('a-scene');
             console.log(scene);
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 200; i++) {
                 console.log("appending");
                 // Create an 'a-entity' element
                 let flower = document.createElement('a-entity');
@@ -89,8 +89,8 @@
         // A helper function to generate random position strings
         function getRandomPosition() {
             // Define the range for your random positions here
-            const x = Math.random() * 5 
-            const y = Math.random() * 3
+            const x = Math.random() * 10-5
+            const y = Math.random() * 3-1
             const z = Math.random() * - 3
             return `${x} ${y} ${z}`;
          }
